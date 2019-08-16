@@ -38,8 +38,7 @@
       }, {
         "id": "test_post_message",
         "tql": {
-          "tql": "-- This SQL operation is useful to test the message you've\n-- constructed for your webhook. If you provide a Slack\n-- auth in \"Auth & user settings\", it will post a message\n-- to your Slackbot channel.\nSELECT * FROM slack.post_chat_message AS A\nJOIN this.get_slack_message AS B\nON A.$body.blocks = B.blocks\nAND A.$body.text = B.text\nWHERE A.$body.channel = (SELECT user_id from slack.test_auth)"
-        }
+          "tql": "-- This SQL operation is useful to test the message you've\n-- constructed for your webhook. If you provide a Slack\n-- auth in \"Auth & user settings\", it will post a message\n-- to your Slackbot channel.\n\nSELECT * FROM slack.post_chat_message\n  WHERE ($body.blocks, $body.text) IN (SELECT blocks, text FROM this.get_slack_message)\n  AND $body.channel = (SELECT user_id FROM slack.test_auth)\n"
       }],
       "dataConnections": [{
         "ref": "slack_identify.raw",
