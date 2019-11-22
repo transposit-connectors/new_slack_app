@@ -2,7 +2,7 @@
   "v2": {
     "transposit": {
       "dependencies": [{
-        "name": "transposit/slack:v2.*.*",
+        "name": "transposit/slack:v3.*.*",
         "alias": "slack",
         "title": "Slack",
         "description": "Authorize this connector if you want to use the Slack API."
