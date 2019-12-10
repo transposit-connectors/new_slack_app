@@ -5,8 +5,9 @@
  * For sample code and reference material, visit
  * https://www.transposit.com/docs/references/js-operations
  */
-({user}) => {
+({http_event}) => {
   return {
+    http_event,
     // The blocks get displayed in the actual message. 
     // You can play with block kit here: https://api.slack.com/tools/block-kit-builder
     blocks: [{
