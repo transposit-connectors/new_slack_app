@@ -5,19 +5,21 @@
  * For sample code and reference material, visit
  * https://www.transposit.com/docs/references/js-operations
  */
-({http_event}) => {
+({ http_event }) => {
   return {
     http_event,
-    // The blocks get displayed in the actual message. 
+    // The blocks get displayed in the actual message.
     // You can play with block kit here: https://api.slack.com/tools/block-kit-builder
-    blocks: [{
-      "type": "section",
-      "text": {
-          "type": "mrkdwn",
-          "text": "Hello World!"
-      }
-    }],
+    blocks: [
+      {
+        type: "section",
+        text: {
+          type: "mrkdwn",
+          text: "Hello World!",
+        },
+      },
+    ],
     // The text content gets displayed in the notification
-    text: 'A message from Transposit!'
+    text: "A message from Transposit!",
   };
-}
+};

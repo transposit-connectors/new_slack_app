@@ -11,9 +11,13 @@
   const userId = parsed_body.user_id;
 
   setImmediate(() => {
-    let user = api.user({type: "slack", workspaceId, userId});
+    let user = api.user({ type: "slack", workspaceId, userId });
     if (user) {
-      let message = api.run('this.get_slack_message', {http_event}, {asUser: user.id})[0];
+      let message = api.run(
+        "this.get_slack_message",
+        { http_event },
+        { asUser: user.id }
+      )[0];
       api.run("slack_webhook.respond_to_slash_command", message);
     } else {
       let text = `Configure user settings at ${env.getBuiltin().appUrl}`;
@@ -21,5 +25,4 @@
     }
   });
   return api.run("slack_webhook.acknowledge_slash_command");
-}
-
+};
